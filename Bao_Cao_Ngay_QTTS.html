@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#003366">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Báo Cáo QTTS">
+  <meta name="application-name" content="Báo Cáo QTTS">
+  <meta name="mobile-web-app-capable" content="yes">
+  
+  <title>BÁO CÁO NGÀY CBNV BP QTTS</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Times New Roman", Times, serif !important;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      --primary-dark: #003366;
+      --primary-blue: #005EA6;
+      --primary-light: #0b76c5;
+      --accent-yellow: #FFD700;
+      --bg-color: #f0f4f8;
+      --card-bg: #ffffff;
+      --text-main: #102a43;
+      --text-muted: #627d98;
+      --border-color: #d9e2ec;
+      --success: #16a34a;
+      --warning: #d97706;
+      --danger: #dc2626;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .app-container {
+      max-width: 540px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background: #f8fafc;
+      position: relative;
+      padding-bottom: 95px;
+      box-shadow: 0 0 25px rgba(0, 51, 102, 0.08);
+    }
+
+    /* HEADER */
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+      color: #ffffff;
+      padding: 24px 18px 22px;
+      border-radius: 0 0 26px 26px;
+      box-shadow: 0 8px 20px rgba(0, 51, 102, 0.2);
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .app-title {
+      font-size: 19px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      line-height: 1.3;
+    }
+
+    .app-date {
+      font-size: 13.5px;
+      color: #e2e8f0;
+      margin-top: 4px;
+      text-transform: capitalize;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .avatar {
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: bold;
+      color: #ffffff;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 14px;
+      padding: 10px 6px;
+      text-align: center;
+      backdrop-filter: blur(4px);
+    }
+
+    .stat-number {
+      font-size: 22px;
+      font-weight: bold;
+      display: block;
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #f1f5f9;
+    }
+
+    /* MAIN CONTENT */
+    .content {
+      padding: 16px 14px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin: 14px 2px 8px;
+    }
+
+    .section-header h2 {
+      font-size: 16.5px;
+      font-weight: bold;
+      color: var(--primary-dark);
+    }
+
+    .section-subtitle {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 12px rgba(16, 42, 67, 0.05);
+      border: 1px solid var(--border-color);
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 12px;
+      font-weight: bold;
+      color: #334e68;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+      width: 100%;
+      background: #f8fafc;
+      border: 1.5px solid var(--border-color);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 14.5px;
+      color: var(--text-main);
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    textarea {
+      min-height: 85px;
+      resize: vertical;
+      line-height: 1.4;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      background: #ffffff;
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 3px rgba(0, 94, 166, 0.12);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 11px 16px;
+      border-radius: 12px;
+      font-size: 14.5px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: all 0.15s ease-in-out;
+      text-decoration: none;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-block {
+      width: 100%;
+    }
+
+    .btn-primary {
+      background: var(--primary-blue);
+      color: #ffffff;
+      box-shadow: 0 3px 8px rgba(0, 94, 166, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-outline {
+      background: #f0f7ff;
+      color: var(--primary-blue);
+      border: 1px solid #bfdbfe;
+    }
+
+    .btn-yellow {
+      background: #eab308;
+      color: #1e293b;
+      box-shadow: 0 3px 8px rgba(234, 179, 8, 0.25);
+    }
+
+    .btn-yellow:hover {
+      background: #ca8a04;
+    }
+
+    .btn-danger-light {
+      background: #fef2f2;
+      color: var(--danger);
+      border: 1px solid #fecaca;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .btn-group .btn {
+      flex: 1;
+    }
+
+    /* TASK LIST */
+    .task-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 12px;
+      background: #ffffff;
+      border-radius: 14px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      transition: background-color 0.2s;
+    }
+
+    .task-item.completed {
+      background: #f8fafc;
+    }
+
+    .task-checkbox-container {
+      padding-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .custom-checkbox {
+      width: 22px;
+      height: 22px;
+      border: 2px solid #94a3b8;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background: #ffffff;
+      transition: all 0.2s;
+    }
+
+    .task-item.completed .custom-checkbox {
+      background: var(--success);
+      border-color: var(--success);
+      color: #ffffff;
+    }
+
+    .custom-checkbox::after {
+      content: "✓";
+      font-size: 14px;
+      font-weight: bold;
+      display: none;
+    }
+
+    .task-item.completed .custom-checkbox::after {
+      display: block;
+    }
+
+    .task-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .task-text {
+      font-size: 14.5px;
+      font-weight: bold;
+      color: var(--text-main);
+      word-break: break-word;
+      line-height: 1.35;
+    }
+
+    .task-item.completed .task-text {
+      text-decoration: line-through;
+      color: #94a3b8;
+      font-weight: normal;
+    }
+
+    .task-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+      align-items: center;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #e2e8f0;
+    }
+
+    .tag-status-doing {
+      background: #fef3c7;
+      color: #92400e;
+      border-color: #fde68a;
+      font-weight: bold;
+    }
+
+    .tag-status-done {
+      background: #dcfce7;
+      color: #166534;
+      border-color: #bbf7d0;
+      font-weight: bold;
+    }
+
+    .task-actions {
+      display: flex;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .icon-btn {
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      width: 28px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #475569;
+      font-size: 13px;
+    }
+
+    .icon-btn:hover {
+      background: #e2e8f0;
+    }
+
+    .icon-btn.delete {
+      color: var(--danger);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 26px 16px;
+      color: var(--text-muted);
+      font-style: italic;
+      font-size: 14px;
+      background: #ffffff;
+      border-radius: 14px;
+      border: 1px dashed var(--border-color);
+    }
+
+    /* REPORT PREVIEW CARD */
+    .report-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 13.5px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      color: #1e293b;
+      max-height: 240px;
+      overflow-y: auto;
+    }
+
+    /* FIXED BOTTOM NAV */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(540px, 100%);
+      background: #ffffff;
+      border-top: 1px solid var(--border-color);
+      padding: 12px 14px calc(12px + env(safe-area-inset-bottom));
+      display: flex;
+      gap: 10px;
+      box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.07);
+      z-index: 100;
+    }
+
+    .bottom-bar .btn {
+      flex: 1;
+    }
+
+    /* TOAST */
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 84px;
+      transform: translateX(-50%);
+      background: rgba(16, 42, 67, 0.95);
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-size: 13px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 999;
+      display: none;
+      text-align: center;
+      white-space: nowrap;
+      animation: fadeIn 0.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, 10px); }
+      to { opacity: 1; transform: translate(-50%, 0); }
+    }
+
+    /* MODAL */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(2px);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-container {
+      width: min(540px, 100%);
+      background: #ffffff;
+      border-radius: 24px 24px 0 0;
+      padding: 20px 18px calc(20px + env(safe-area-inset-bottom));
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 -8px 25px rgba(0,0,0,0.2);
+      animation: slideUp 0.25s ease-out;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .modal-title {
+      font-size: 17px;
+      font-weight: bold;
+      color: var(--primary-dark);
+    }
+
+    .close-modal-btn {
+      background: #f1f5f9;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748b;
+    }
+
+    .modal-report-box {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 14px;
+      line-height: 1.65;
+      white-space: pre-wrap;
+      color: #0f172a;
+      user-select: text;
+      max-height: 50vh;
+      overflow-y: auto;
+    }
+
+    @media (min-width: 600px) {
+      body {
+        padding: 24px 0;
+      }
+      .app-container {
+        border-radius: 26px;
+        overflow: hidden;
+      }
+      .modal-overlay {
+        align-items: center;
+      }
+      .modal-container {
+        border-radius: 20px;
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="app-container">
+  <!-- 1 & 2. HEADER -->
+  <header class="header">
+    <div class="header-top">
+      <div>
+        <h1 class="app-title">BÁO CÁO NGÀY CBNV BP QTTS</h1>
+        <div class="app-date" id="currentDateDisplay">Đang tải ngày...</div>
+      </div>
+      <div class="header-actions">
+        <div class="avatar" title="Cán bộ Quản trị Tài sản">T</div>
+      </div>
+    </div>
+
+    <!-- 3 Ô THỐNG KÊ -->
+    <div class="stats-grid">
+      <div class="stat-box">
+        <span class="stat-number" id="totalTasksCount">0</span>
+        <span class="stat-label">Tổng việc</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-number" id="doneTasksCount">0</span>
+        <span class="stat-label">Hoàn thành</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-number" id="doingTasksCount">0</span>
+        <span class="stat-label">Đang xử lý</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="content">
+    <!-- 3. PHẦN NHẬP CÔNG VIỆC -->
+    <div class="section-header">
+      <h2>➕ Thêm công việc</h2>
+      <span class="section-subtitle">Nhập nhanh trong ngày</span>
+    </div>
+
+    <div class="card">
+      <form id="taskForm" onsubmit="handleAddTask(event)">
+        <div class="form-group">
+          <label class="form-label" for="taskContentInput">NỘI DUNG CÔNG VIỆC</label>
+          <textarea id="taskContentInput" placeholder="Ví dụ: Kiểm tra báo giá nhà cung cấp máy đếm tiền..." required></textarea>
+        </div>
+
+        <div class="form-row form-group">
+          <div>
+            <label class="form-label" for="taskCategorySelect">NHÓM CÔNG VIỆC</label>
+            <select id="taskCategorySelect">
+              <option value="Mua sắm">Mua sắm</option>
+              <option value="Quản lý tài sản">Quản lý tài sản</option>
+              <option value="Sửa chữa">Sửa chữa</option>
+              <option value="Vận hành">Vận hành</option>
+              <option value="Hành chính">Hành chính</option>
+              <option value="Họp / Trao đổi">Họp / Trao đổi</option>
+              <option value="Khác">Khác</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="form-label" for="taskStatusSelect">TRẠNG THÁI</label>
+            <select id="taskStatusSelect">
+              <option value="doing">Đang xử lý</option>
+              <option value="done">Hoàn thành</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top: 10px;">
+          ＋ Thêm công việc
+        </button>
+      </form>
+    </div>
+
+    <!-- 4. DANH SÁCH CÔNG VIỆC HÔM NAY -->
+    <div class="section-header">
+      <h2>📋 Công việc hôm nay</h2>
+      <span class="section-subtitle" id="taskCounterText">0 công việc</span>
+    </div>
+
+    <div id="tasksListContainer">
+      <!-- Dynamic task items will appear here -->
+    </div>
+
+    <!-- 5. BÁO CÁO CUỐI NGÀY -->
+    <div class="section-header" style="margin-top: 18px;">
+      <h2>📧 Báo cáo cuối ngày</h2>
+      <span class="section-subtitle">Tự động tổng hợp</span>
+    </div>
+
+    <div class="card">
+      <div id="reportSummaryBox" class="report-box">Đang tạo báo cáo...</div>
+      
+      <!-- 6. NÚT BÁO CÁO -->
+      <div class="btn-group">
+        <button class="btn btn-outline" type="button" onclick="openReportModal()">
+          👁 Xem báo cáo
+        </button>
+        <button class="btn btn-yellow" type="button" onclick="handleSendEmailDirect()">
+          ✉ Gửi Email
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- 7. THANH ĐIỀU HƯỚNG DƯỚI CÙNG -->
+  <div class="bottom-bar">
+    <button class="btn btn-danger-light" type="button" onclick="handleClearToday()">
+      🗑 Xóa ngày
+    </button>
+    <button class="btn btn-primary" type="button" onclick="openReportModal()">
+      📄 Tạo báo cáo
+    </button>
+  </div>
+</div>
+
+<!-- TOAST MESSAGE -->
+<div id="toastMessage" class="toast"></div>
+
+<!-- MODAL XEM BÁO CÁO CHI TIẾT -->
+<div class="modal-overlay" id="reportModalOverlay">
+  <div class="modal-container">
+    <div class="modal-header">
+      <h3 class="modal-title">BÁO CÁO CÔNG VIỆC HOÀN CHỈNH</h3>
+      <button class="close-modal-btn" onclick="closeReportModal()">&times;</button>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="recipientEmailInput">NGƯỜI NHẬN EMAIL</label>
+      <input type="email" id="recipientEmailInput" placeholder="Ví dụ: banlanhdao@congty.com" onchange="saveRecipientEmail(this.value)">
+    </div>
+
+    <div class="form-group" style="margin-top: 12px;">
+      <label class="form-label">NỘI DUNG BÁO CÁO</label>
+      <div id="modalReportContent" class="modal-report-box"></div>
+    </div>
+
+    <div class="btn-group" style="margin-top: 16px;">
+      <button class="btn btn-outline" type="button" onclick="handleCopyReport()">
+        📋 Sao chép
+      </button>
+      <button class="btn btn-outline" type="button" onclick="handleDownloadWordDoc()">
+        📄 Xuất File Word
+      </button>
+      <button class="btn btn-primary" type="button" onclick="handleSendEmailFromModal()">
+        ✉ Mở Email
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL SỬA CÔNG VIỆC -->
+<div class="modal-overlay" id="editModalOverlay">
+  <div class="modal-container">
+    <div class="modal-header">
+      <h3 class="modal-title">Chỉnh sửa công việc</h3>
+      <button class="close-modal-btn" onclick="closeEditModal()">&times;</button>
+    </div>
+
+    <form id="editTaskForm" onsubmit="handleSaveEditTask(event)">
+      <input type="hidden" id="editTaskId">
+      <div class="form-group">
+        <label class="form-label" for="editTaskContentInput">NỘI DUNG CÔNG VIỆC</label>
+        <textarea id="editTaskContentInput" required></textarea>
+      </div>
+
+      <div class="form-row form-group">
+        <div>
+          <label class="form-label" for="editTaskCategorySelect">NHÓM CÔNG VIỆC</label>
+          <select id="editTaskCategorySelect">
+            <option value="Mua sắm">Mua sắm</option>
+            <option value="Quản lý tài sản">Quản lý tài sản</option>
+            <option value="Sửa chữa">Sửa chữa</option>
+            <option value="Vận hành">Vận hành</option>
+            <option value="Hành chính">Hành chính</option>
+            <option value="Họp / Trao đổi">Họp / Trao đổi</option>
+            <option value="Khác">Khác</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="form-label" for="editTaskStatusSelect">TRẠNG THÁI</label>
+          <select id="editTaskStatusSelect">
+            <option value="doing">Đang xử lý</option>
+            <option value="done">Hoàn thành</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="btn-group" style="margin-top: 16px;">
+        <button type="button" class="btn btn-outline" onclick="closeEditModal()">Hủy</button>
+        <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  // LƯU DỮ LIỆU LOCALSTORAGE
+  const STORAGE_KEY = 'BC_NGAY_QTTS_DATA_V1';
+  const EMAIL_STORAGE_KEY = 'BC_NGAY_QTTS_RECIPIENT_EMAIL';
+
+  // Format Helper: Ngày hiện tại
+  const now = new Date();
+  const dayNames = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
+  const dayOfWeek = dayNames[now.getDay()];
+  const dd = String(now.getDate()).padStart(2, '0');
+  const mm = String(now.getMonth() + 1).padStart(2, '0');
+  const yyyy = now.getFullYear();
+  const formattedToday = `${dd}/${mm}/${yyyy}`;
+  const headerDateStr = `${dayOfWeek}, ${formattedToday}`;
+  const todayISO = `${yyyy}-${mm}-${dd}`;
+
+  // Gán ngày lên Header
+  document.getElementById('currentDateDisplay').textContent = headerDateStr;
+
+  // Lấy dữ liệu từ localStorage
+  let allTasks = [];
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    allTasks = raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    allTasks = [];
+  }
+
+  // Lọc chỉ lấy công việc của ngày hôm nay
+  let tasks = allTasks.filter(t => t.dateKey === todayISO);
+
+  // Lấy email đã lưu
+  const savedEmail = localStorage.getItem(EMAIL_STORAGE_KEY) || '';
+  const emailInput = document.getElementById('recipientEmailInput');
+  if (emailInput) {
+    emailInput.value = savedEmail;
+  }
+
+  function saveRecipientEmail(val) {
+    localStorage.setItem(EMAIL_STORAGE_KEY, val.trim());
+  }
+
+  function persistData() {
+    const otherTasks = allTasks.filter(t => t.dateKey !== todayISO);
+    allTasks = [...otherTasks, ...tasks];
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(allTasks));
+    renderApp();
+  }
+
+  // THÊM CÔNG VIỆC
+  function handleAddTask(event) {
+    event.preventDefault();
+    const contentInput = document.getElementById('taskContentInput');
+    const categorySelect = document.getElementById('taskCategorySelect');
+    const statusSelect = document.getElementById('taskStatusSelect');
+
+    const text = contentInput.value.trim();
+    if (!text) {
+      showToast('Vui lòng nhập nội dung công việc');
+      return;
+    }
+
+    const currentTime = new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
+
+    const newTask = {
+      id: 'task_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
+      dateKey: todayISO,
+      text: text,
+      category: categorySelect.value,
+      status: statusSelect.value,
+      createdTime: currentTime
+    };
+
+    tasks.unshift(newTask);
+    contentInput.value = '';
+    contentInput.focus();
+
+    persistData();
+    showToast('Đã thêm công việc thành công');
+  }
+
+  // TOGGLE HOÀN THÀNH
+  function toggleTaskStatus(id) {
+    const item = tasks.find(t => t.id === id);
+    if (item) {
+      item.status = item.status === 'done' ? 'doing' : 'done';
+      persistData();
+      showToast(item.status === 'done' ? 'Đã hoàn thành công việc' : 'Chuyển sang đang xử lý');
+    }
+  }
+
+  // XÓA CÔNG VIỆC
+  function deleteTask(id) {
+    if (confirm('Bạn có chắc chắn muốn xóa công việc này?')) {
+      tasks = tasks.filter(t => t.id !== id);
+      persistData();
+      showToast('Đã xóa công việc');
+    }
+  }
+
+  // SỬA CÔNG VIỆC
+  function openEditModal(id) {
+    const item = tasks.find(t => t.id === id);
+    if (!item) return;
+
+    document.getElementById('editTaskId').value = item.id;
+    document.getElementById('editTaskContentInput').value = item.text;
+    document.getElementById('editTaskCategorySelect').value = item.category;
+    document.getElementById('editTaskStatusSelect').value = item.status;
+
+    document.getElementById('editModalOverlay').classList.add('active');
+  }
+
+  function closeEditModal() {
+    document.getElementById('editModalOverlay').classList.remove('active');
+  }
+
+  function handleSaveEditTask(event) {
+    event.preventDefault();
+    const id = document.getElementById('editTaskId').value;
+    const text = document.getElementById('editTaskContentInput').value.trim();
+    const category = document.getElementById('editTaskCategorySelect').value;
+    const status = document.getElementById('editTaskStatusSelect').value;
+
+    if (!text) {
+      showToast('Nội dung công việc không được để trống');
+      return;
+    }
+
+    const item = tasks.find(t => t.id === id);
+    if (item) {
+      item.text = text;
+      item.category = category;
+      item.status = status;
+      persistData();
+      closeEditModal();
+      showToast('Đã cập nhật công việc');
+    }
+  }
+
+  // CẤU TRÚC BÁO CÁO CHUẨN
+  function generateReportText() {
+    const doneTasks = tasks.filter(t => t.status === 'done');
+    const doingTasks = tasks.filter(t => t.status === 'doing');
+
+    let report = `Kính gửi: Ban Lãnh đạo\n\n`;
+    report += `BÁO CÁO CÔNG VIỆC HẰNG NGÀY\n`;
+    report += `Ngày: ${formattedToday}\n\n`;
+
+    // I. CÁC VIỆC ĐÃ HOÀN THÀNH
+    report += `I. CÁC VIỆC ĐÃ HOÀN THÀNH (${doneTasks.length})\n`;
+    if (doneTasks.length > 0) {
+      doneTasks.forEach(t => {
+        report += `* ${t.text}\n`;
+      });
+    } else {
+      report += `* Không có\n`;
+    }
+    report += `\n`;
+
+    // II. CÁC VIỆC ĐANG XỬ LÝ / TIẾP TỤC NGÀY MAI
+    report += `II. CÁC VIỆC ĐANG XỬ LÝ / TIẾP TỤC NGÀY MAI (${doingTasks.length})\n`;
+    if (doingTasks.length > 0) {
+      doingTasks.forEach(t => {
+        report += `* ${t.text}\n`;
+      });
+    } else {
+      report += `* Không có\n`;
+    }
+    report += `\n`;
+
+    // III. CÔNG VIỆC PHÁT SINH / VẤN ĐỀ CẦN HỖ TRỢ
+    report += `III. CÔNG VIỆC PHÁT SINH / VẤN ĐỀ CẦN HỖ TRỢ\n`;
+    report += `* Chưa có nội dung phát sinh / vấn đề cần hỗ trợ.\n\n`;
+
+    report += `Trân trọng.`;
+    return report;
+  }
+
+  // RENDER GIAO DIỆN
+  function renderApp() {
+    const totalCount = tasks.length;
+    const doneCount = tasks.filter(t => t.status === 'done').length;
+    const doingCount = totalCount - doneCount;
+
+    document.getElementById('totalTasksCount').textContent = totalCount;
+    document.getElementById('doneTasksCount').textContent = doneCount;
+    document.getElementById('doingTasksCount').textContent = doingCount;
+    document.getElementById('taskCounterText').textContent = `${totalCount} công việc`;
+
+    const container = document.getElementById('tasksListContainer');
+    if (totalCount === 0) {
+      container.innerHTML = `
+        <div class="empty-state">
+          Chưa có công việc nào trong hôm nay.<br>
+          Hãy nhập công việc đầu tiên ở form phía trên.
+        </div>
+      `;
+    } else {
+      container.innerHTML = tasks.map(t => {
+        const isDone = t.status === 'done';
+        return `
+          <div class="task-item ${isDone ? 'completed' : ''}">
+            <div class="task-checkbox-container">
+              <div class="custom-checkbox" onclick="toggleTaskStatus('${t.id}')" title="${isDone ? 'Đánh dấu chưa hoàn thành' : 'Đánh dấu hoàn thành'}"></div>
+            </div>
+            <div class="task-content">
+              <div class="task-text">${escapeHtml(t.text)}</div>
+              <div class="task-tags">
+                <span class="tag">${escapeHtml(t.category)}</span>
+                <span class="tag ${isDone ? 'tag-status-done' : 'tag-status-doing'}">
+                  ${isDone ? 'Hoàn thành' : 'Đang xử lý'}
+                </span>
+                <span class="tag" style="color:#64748b;">🕒 ${t.createdTime}</span>
+              </div>
+            </div>
+            <div class="task-actions">
+              <button type="button" class="icon-btn" onclick="openEditModal('${t.id}')" title="Sửa">✏️</button>
+              <button type="button" class="icon-btn delete" onclick="deleteTask('${t.id}')" title="Xóa">🗑️</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    const reportText = generateReportText();
+    document.getElementById('reportSummaryBox').textContent = reportText;
+    const modalReportElem = document.getElementById('modalReportContent');
+    if (modalReportElem) {
+      modalReportElem.textContent = reportText;
+    }
+  }
+
+  function openReportModal() {
+    const reportText = generateReportText();
+    document.getElementById('modalReportContent').textContent = reportText;
+    document.getElementById('reportModalOverlay').classList.add('active');
+  }
+
+  function closeReportModal() {
+    document.getElementById('reportModalOverlay').classList.remove('active');
+  }
+
+  async function handleCopyReport() {
+    const reportText = generateReportText();
+    try {
+      await navigator.clipboard.writeText(reportText);
+      showToast('Đã sao chép toàn bộ báo cáo vào bộ nhớ đệm!');
+    } catch (err) {
+      const tempArea = document.createElement('textarea');
+      tempArea.value = reportText;
+      document.body.appendChild(tempArea);
+      tempArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempArea);
+      showToast('Đã sao chép báo cáo!');
+    }
+  }
+
+  function handleDownloadWordDoc() {
+    const doneTasks = tasks.filter(t => t.status === 'done');
+    const doingTasks = tasks.filter(t => t.status === 'doing');
+
+    let doneItemsHtml = '';
+    if (doneTasks.length > 0) {
+      doneItemsHtml = '<ul style="margin: 0 0 6pt 0; padding-left: 22px; mso-para-margin: 0 0 3pt 0;">' +
+        doneTasks.map(t => `<li style="margin: 0 0 3pt 0; mso-para-margin: 0 0 3pt 0; font-size: 13pt; font-family: 'Times New Roman', serif; line-height: 1.25;">${escapeHtml(t.text)}</li>`).join('') +
+        '</ul>';
+    } else {
+      doneItemsHtml = '<p style="margin: 0 0 6pt 18px; mso-para-margin: 0 0 6pt 18px; font-size: 13pt; font-family: ' + "'Times New Roman', serif;" + ' line-height: 1.25;">* Không có</p>';
+    }
+
+    let doingItemsHtml = '';
+    if (doingTasks.length > 0) {
+      doingItemsHtml = '<ul style="margin: 0 0 6pt 0; padding-left: 22px; mso-para-margin: 0 0 3pt 0;">' +
+        doingTasks.map(t => `<li style="margin: 0 0 3pt 0; mso-para-margin: 0 0 3pt 0; font-size: 13pt; font-family: 'Times New Roman', serif; line-height: 1.25;">${escapeHtml(t.text)}</li>`).join('') +
+        '</ul>';
+    } else {
+      doingItemsHtml = '<p style="margin: 0 0 6pt 18px; mso-para-margin: 0 0 6pt 18px; font-size: 13pt; font-family: ' + "'Times New Roman', serif;" + ' line-height: 1.25;">* Không có</p>';
+    }
+
+    const wordHtml = `
+      <html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml" xmlns="http://www.w3.org/TR/REC-html40">
+      <head>
+        <meta charset="utf-8">
+        <title>Báo Cáo Công Việc Ngày ${formattedToday}</title>
+        <!--[if gte mso 9]>
+        <xml>
+          <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>100</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+            <w:ValidateAgainstSchemas/>
+            <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+            <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+            <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+            <w:Compatibility>
+              <w:BreakWrappedTables/>
+              <w:SnapToGridInCell/>
+              <w:WrapTextWithPunct/>
+              <w:UseAsianBreakRules/>
+              <w:DontGrowAutofit/>
+            </w:Compatibility>
+          </w:WordDocument>
+        </xml>
+        <![endif]-->
+        <style>
+          @page Section1 {
+            size: 595.3pt 841.9pt; /* A4 */
+            margin: 42.5pt 42.5pt 42.5pt 42.5pt; /* 1.5cm */
+            mso-header-margin: 36.0pt;
+            mso-footer-margin: 36.0pt;
+            mso-paper-source: 0;
+          }
+          div.Section1 { page: Section1; }
+          body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 13.0pt;
+            color: #000000;
+          }
+          p.MsoNormal, li.MsoNormal, div.MsoNormal, p, li, div {
+            mso-style-unhide: no;
+            mso-style-qformat: yes;
+            mso-style-parent: "";
+            margin: 0cm;
+            margin-top: 0pt;
+            margin-bottom: 0pt;
+            mso-para-margin-top: 0pt;
+            mso-para-margin-bottom: 0pt;
+            mso-para-margin: 0pt;
+            mso-pagination: widow-orphan;
+            font-size: 13.0pt;
+            font-family: "Times New Roman", Times, serif;
+            line-height: 1.15;
+          }
+          table.MsoNormalTable, table {
+            mso-style-name: "Table Normal";
+            mso-tstyle-rowband-size: 0;
+            mso-tstyle-colband-size: 0;
+            mso-padding-alt: 0cm 0cm 0cm 0cm;
+            mso-para-margin: 0pt;
+            margin: 0cm;
+            margin-top: 0pt;
+            margin-bottom: 0pt;
+            mso-para-margin-top: 0pt;
+            mso-para-margin-bottom: 0pt;
+            font-size: 13.0pt;
+            font-family: "Times New Roman", Times, serif;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="Section1">
+          <!-- HEADER TIÊU ĐỀ NAM A BANK & QUỐC HIỆU (SPACING BEFORE 0PT, AFTER 0PT) -->
+          <table class="MsoNormalTable" style="width: 100%; border-collapse: collapse; margin-bottom: 12pt; mso-para-margin: 0pt; mso-para-margin-bottom: 0pt;">
+            <tr>
+              <td style="width: 50%; vertical-align: top; padding: 0;">
+                <p class="MsoNormal" style="color: #0072ce; font-size: 20pt; font-weight: 900; font-family: 'Arial', sans-serif; letter-spacing: 0.5px; line-height: 1.1; margin: 0; margin-top: 0pt; margin-bottom: 0pt; mso-para-margin-top: 0pt; mso-para-margin-bottom: 0pt;">NAM A BANK</p>
+                <p class="MsoNormal" style="font-size: 11pt; font-weight: bold; color: #000000; line-height: 1.2; margin: 0; margin-top: 0pt; margin-bottom: 0pt; mso-para-margin-top: 0pt; mso-para-margin-bottom: 0pt;">NAM A BANK – Phòng HCQT</p>
+                <p class="MsoNormal" style="font-size: 10pt; color: #111111; line-height: 1.2; margin: 0; margin-top: 0pt; margin-bottom: 0pt; mso-para-margin-top: 0pt; mso-para-margin-bottom: 0pt;">201-203 Cách Mạng Tháng Tám, P.Bàn Cờ, TP. HCM</p>
+                <p class="MsoNormal" style="font-size: 10pt; color: #111111; line-height: 1.2; margin: 0; margin-top: 0pt; margin-bottom: 0pt; mso-para-margin-top: 0pt; mso-para-margin-bottom: 0pt;"><strong>[T]</strong> 08 3929 6699 - <strong>[F]</strong> 08 3929 6688</p>
+                <p class="MsoNormal" style="font-size: 10pt; color: #111111; line-height: 1.2; margin: 0; margin-top: 0pt; margin-bottom: 0pt; mso-para-margin-top: 0pt; mso-para-margin-bottom: 0pt;"><strong>[Hotline]</strong> 1900 6679 - <strong>[W]</strong> www.namabank.com.vn</p>
+              </td>
+              <td style="width: 50%; vertical-align: top; text-align: center; padding: 0;">
+                <p class="MsoNormal" style="font-size: 11.5pt; font-weight: bold; text-transform: uppercase; line-height: 1.2; text-align: center; margin: 0; margin-top: 0pt; margin-bottom: 0pt; mso-para-margin-top: 0pt; mso-para-margin-bottom: 0pt;">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</p>
+                <p class="MsoNormal" style="font-size: 12pt; font-weight: bold; line-height: 1.2; text-align: center; margin: 0; margin-top: 0pt; margin-bottom: 0pt; mso-para-margin-top: 0pt; mso-para-margin-bottom: 0pt;">
+                  <span style="border-bottom: 1.5px solid #000000; padding-bottom: 1px; display: inline-block;">Độc lập – Tự do – Hạnh phúc</span>
+                </p>
+                <p class="MsoNormal" style="font-size: 11.5pt; font-style: italic; line-height: 1.2; text-align: center; margin: 0; margin-top: 4pt; margin-bottom: 0pt; mso-para-margin-top: 4pt; mso-para-margin-bottom: 0pt;">
+                  Tp.HCM, ngày ${dd} &nbsp;tháng ${mm} &nbsp;năm ${yyyy}
+                </p>
+              </td>
+            </tr>
+          </table>
+
+          <!-- TIÊU ĐỀ BÁO CÁO -->
+          <p class="MsoNormal" style="margin: 14pt 0 10pt 0; mso-para-margin: 14pt 0 10pt 0; text-align: center; font-size: 15pt; font-weight: bold; text-transform: uppercase; color: #003366;">
+            BÁO CÁO CÔNG VIỆC HẰNG NGÀY
+          </p>
+
+          <p class="MsoNormal" style="margin: 0 0 10pt 0; mso-para-margin: 0 0 10pt 0; font-size: 13pt;"><strong>Kính gửi:</strong> Ban Lãnh đạo</p>
+
+          <p class="MsoNormal" style="margin: 8pt 0 2pt 0; mso-para-margin: 8pt 0 2pt 0; font-size: 13pt; font-weight: bold;">
+            I. CÁC VIỆC ĐÃ HOÀN THÀNH (${doneTasks.length})
+          </p>
+          ${doneItemsHtml}
+
+          <p class="MsoNormal" style="margin: 8pt 0 2pt 0; mso-para-margin: 8pt 0 2pt 0; font-size: 13pt; font-weight: bold;">
+            II. CÁC VIỆC ĐANG XỬ LÝ / TIẾP TỤC NGÀY MAI (${doingTasks.length})
+          </p>
+          ${doingItemsHtml}
+
+          <p class="MsoNormal" style="margin: 8pt 0 2pt 0; mso-para-margin: 8pt 0 2pt 0; font-size: 13pt; font-weight: bold;">
+            III. CÔNG VIỆC PHÁT SINH / VẤN ĐỀ CẦN HỖ TRỢ
+          </p>
+          <p class="MsoNormal" style="margin: 0 0 10pt 18px; mso-para-margin: 0 0 10pt 18px; font-size: 13pt;">
+            * Chưa có nội dung phát sinh / vấn đề cần hỗ trợ.
+          </p>
+
+          <p class="MsoNormal" style="margin: 16pt 0 0 0; mso-para-margin: 16pt 0 0 0; font-size: 13pt; font-style: italic;">
+            Trân trọng.
+          </p>
+        </div>
+      </body>
+      </html>
+    `;
+
+    const blob = new Blob(['\ufeff', wordHtml], { type: 'application/msword;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `Bao_Cao_Ngay_${formattedToday.replace(/\//g, '-')}.doc`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+    showToast('Đã xuất file Word (.doc) thành công!');
+  }
+
+  function handleSendEmailFromModal() {
+    const recipient = document.getElementById('recipientEmailInput').value.trim();
+    if (recipient) {
+      saveRecipientEmail(recipient);
+    }
+    const subject = `Báo cáo công việc ngày ${formattedToday}`;
+    const body = generateReportText();
+    const mailtoUrl = `mailto:${encodeURIComponent(recipient)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoUrl;
+  }
+
+  function handleSendEmailDirect() {
+    const recipient = localStorage.getItem(EMAIL_STORAGE_KEY) || '';
+    const subject = `Báo cáo công việc ngày ${formattedToday}`;
+    const body = generateReportText();
+    const mailtoUrl = `mailto:${encodeURIComponent(recipient)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoUrl;
+  }
+
+  function handleClearToday() {
+    if (tasks.length === 0) {
+      showToast('Hôm nay chưa có dữ liệu công việc để xóa');
+      return;
+    }
+    if (confirm('Bạn có chắc chắn muốn xóa toàn bộ công việc của ngày hôm nay không? Thao tác này không thể hoàn tác.')) {
+      tasks = [];
+      persistData();
+      showToast('Đã xóa toàn bộ công việc hôm nay');
+    }
+  }
+
+  let toastTimer = null;
+  function showToast(msg) {
+    const toast = document.getElementById('toastMessage');
+    toast.textContent = msg;
+    toast.style.display = 'block';
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.style.display = 'none';
+    }, 2200);
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  renderApp();
+</script>
+
+</body>
+</html>
