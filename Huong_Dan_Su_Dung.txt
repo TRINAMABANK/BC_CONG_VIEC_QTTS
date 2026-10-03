@@ -1,0 +1,42 @@
+================================================================================
+   HƯỚNG DẪN SỬ DỤNG WEBAPP "BÁO CÁO NGÀY CBNV BP QTTS" (PWA HOÀN CHỈNH)
+================================================================================
+
+Thư mục dự án: d:\09- LAM APP KIEM TIEN\PM BAO CAO CONG VIEC HANG NGAY
+
+Dự án hiện tại là một Web App hoàn chỉnh (Progressive Web App - PWA), có thể cài đặt 
+trực tiếp lên màn hình chính của iPhone, Android, iPad hoặc máy tính như một app native.
+
+--------------------------------------------------------------------------------
+1. CÁC TẬP TIN CẤU THÀNH WEBAPP:
+--------------------------------------------------------------------------------
+- index.html        : Giao diện Web App chuẩn mobile/desktop, font Times New Roman.
+- manifest.json     : Cấu hình Web App Manifest (tên app, màu chủ đề, icon).
+- sw.js             : Service Worker hỗ trợ chạy offline không cần mạng Internet.
+- icon.svg          : Biểu tượng ứng dụng vector độ phân giải cao cho BP QTTS.
+- server.py         : Web Server nội bộ (chạy bằng Python).
+- Chay_May_Chu_Ket_Noi_Dien_Thoai.bat : File 1-click khởi động Web Server.
+- Chay_Phan_Mem.bat : File 1-click mở giao diện dạng ứng dụng.
+
+--------------------------------------------------------------------------------
+2. CÁCH SỬ DỤNG TRÊN ĐIỆN THOẠI (ANDROID / IPHONE):
+--------------------------------------------------------------------------------
+A. Khi chạy qua mạng Wi-Fi nội bộ:
+   1. Chạy file "Chay_May_Chu_Ket_Noi_Dien_Thoai.bat".
+   2. Trên điện thoại mở trình duyệt (Safari / Chrome), truy cập link:
+      http://<Địa-chỉ-IP-máy-tính>:8080 (ví dụ: http://192.168.1.15:8080)
+
+B. Cách Cài đặt Web App thành icon trên màn hình điện thoại:
+   - Trên iPhone (Safari): Bấm nút "Chia sẻ" (biểu tượng mũi tên đi lên) -> Chọn "Thêm vào MH chính" (Add to Home Screen).
+   - Trên Android (Chrome): Bấm nút "📲 Cài App" trên header hoặc bấm Menu 3 chấm -> Chọn "Cài đặt ứng dụng" / "Thêm vào màn hình chính".
+   - Sau khi cài đặt, ứng dụng sẽ có icon riêng, mở toàn màn hình (không có thanh địa chỉ) giống hệt 1 app native cài từ App Store / Google Play.
+
+--------------------------------------------------------------------------------
+3. CÁCH TRIỂN KHAI ONLINE MIỄN PHÍ LÊN INTERNET (NẾU CẦN):
+--------------------------------------------------------------------------------
+Bạn có thể đưa toàn bộ thư mục này lên các nền tảng miễn phí 100% trong 1 phút:
+- Vercel (kéo thả thư mục vào https://vercel.com)
+- Netlify (kéo thả thư mục vào https://app.netlify.com/drop)
+- GitHub Pages
+Khi đó bạn sẽ có 1 đường link online (ví dụ: https://baocao-qtts.vercel.app) để truy cập mọi lúc mọi nơi từ bất kỳ thiết bị nào có Internet.
+================================================================================

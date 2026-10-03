@@ -1,0 +1,20 @@
+{
+  "name": "BÁO CÁO NGÀY CBNV BP QTTS",
+  "short_name": "Báo Cáo QTTS",
+  "description": "Ứng dụng web quản lý và tự động tổng hợp báo cáo công việc hàng ngày dành cho CBNV Bộ phận Quản trị Tài sản",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#003366",
+  "theme_color": "#003366",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "business", "utilities"],
+  "lang": "vi"
+}
